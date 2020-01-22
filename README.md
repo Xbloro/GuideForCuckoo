@@ -132,9 +132,9 @@ On édite la configuration :
 * dans `reassembly`: mettez `depth`, `request-body-limit` et `response-body-limit` à 0.
 * Mettez `EXTERNAL_NET` à any.
 
-### utilisateur
+### Création d'un utilisateur
 
-On créé un utilisateur nomé cuckoo:
+On créé un utilisateur nommé cuckoo:
 
 `sudo usermodd -a -G kvm cuckoo`
 `sudo usermodd -a -G libvirt-cuckoo`
