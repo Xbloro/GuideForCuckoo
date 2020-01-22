@@ -1,4 +1,4 @@
-# Mise en place d'un serveur Cucko
+# Mise en place d'un serveur Cuckoo 
 ---
 ---
 
