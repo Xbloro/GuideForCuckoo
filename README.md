@@ -398,13 +398,12 @@ Dans le cpu mettez la valeur de `check` sur `partial`
 Dans la partie domaine ajoutez : 
 
 ```
-<qemu:commandline>
-      <qemu:arg value='-cpu'/>
-      <qemu:arg value='host,-hypervisor'/>
+<<qemu:commandline>
+<qemu:arg value='-cpu'/>
+<qemu:arg value='host,hv_time,kvm=off,hv_vendor_id=null,-hypervisor'/>
 </qemu:commandline>
 ```
 
-Changez `host` par une architecture (SandyBridge, Haswell, *Lake)
 
 Prennez un snapchot de la vm et nommez le comme vous l'avez configurer dans `kvm.conf` (j'avais mis "ready")
 
