@@ -403,7 +403,21 @@ Dans la partie domaine ajoutez :
 <qemu:arg value='host,hv_time,kvm=off,hv_vendor_id=null,-hypervisor'/>
 </qemu:commandline>
 ```
+Modifiez ou ajouter : 
 
+```
+ <kvm>
+    <hidden state='on'/>
+  </kvm>
+```
+Ajoutez juste au dessus de `</feature>`
+
+```  
+<cpu mode='host-model' check='partial'>
+    <model fallback='allow'/>
+    <feature policy='disable' name='hypervisor'/>
+ </cpu>
+```
 
 Prennez un snapchot de la vm et nommez le comme vous l'avez configurer dans `kvm.conf` (j'avais mis "ready")
 
