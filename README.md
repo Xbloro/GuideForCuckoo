@@ -1,4 +1,4 @@
-theme: jekyll-theme-cayman
+
 # Mise en place d'un serveur Cuckoo 
 ---
 ---
