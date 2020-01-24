@@ -46,9 +46,9 @@ On installera les dépendences python au fur et à mesure.
 
 ### YARA
 
-Yara permet d'indentifier les malwares selont des règles prédéfinies.
+Yara permet d'indentifier les malwares selon des règles prédéfinies.
 
-On l'intalle : 
+On intalle : 
 
 ```console
 sudo apt-get install git automake libtool make gcc flex bison libssl-dev libjansson-dev libmagic-dev checkinstall python-pip python3-pip 
@@ -171,7 +171,7 @@ Dans Réseau Virtuel, créez un nouveau réseau virtuel isolé. La range IP sur 
 
 ### VSFTPD
 
-Afin que la VM et l'hôte puissent transférer des fichiers de maniière anonyme et sécurisé, sans utiliser de dossier partager, on va monter un FTP.
+Afin que la VM et l'hôte puissent transférer des fichiers de manière anonyme et sécurisé, sans utiliser de dossier partager, on va monter un FTP.
 
 On créé un dossier public et on sécurise tout ça : 
 
@@ -196,7 +196,7 @@ anon_upload_enable=YES
 anon_mkdir_write_enable=YES
 ```
 
-Ajouter à la fin du fichier :
+Ajoutez à la fin du fichier :
 
 ```console
 listen_address=192.168.100.1
@@ -220,7 +220,7 @@ Le ftp est joignable sur `ftp://192.168.100.1:2121`
 
 ### Inetsim
 
-Certain malwares communiquent avec internet, il est donc intéressant de simuler un faux internet afin de récupérer des trames réseaux sans divulguer des informations à "l'attaquant".
+Certains malwares communiquent avec internet, il est donc intéressant de simuler un faux internet afin de récupérer des trames réseaux sans divulguer des informations à "l'attaquant".
 
 On installe :
  
@@ -253,7 +253,7 @@ Vous aurez besoin de logiciel et de driver :
 * [Pillow](https://files.pythonhosted.org/packages/1d/bd/a2dbba6829429f456ae2d0451aa92c45ee058e92a71a0ba4a9cacdaf74ee/Pillow-5.3.0.win32-py2.7.exe)
 * [Python2.7](https://www.python.org/ftp/python/2.7.15/python-2.7.15.msi)
 
-Le package comprend tous les logiciels exploitable par les malwares et quelques modification de registres afin de réduire les trames inutiles sur le réseau.
+Le package comprend tous les logiciels exploitables par les malwares et quelques modifications de registres afin de réduire les trames inutiles sur le réseau.
 
 Ouvrez `virt-manager` et créez la machine virtuelle.
 Nommez la avec un nom explicite, ex : `win7_sandbox`.
@@ -264,11 +264,11 @@ Avant de passer à l'installation cochez bien l'option "configurer la machine vi
 
 Dans les périphériques : 
 
-* changez l'adaptateur réseau NIC sur `virtio` et placez le sur le réseau virtuel créer précédement.
+* changez l'adaptateur réseau NIC sur `virtio` et placez le sur le réseau virtuel créé précédement.
 * ajoutez un disque, mettez le bus type sur : `virtio` et le mode de cache sur `writeback`
 
 On peut passer à l'installation de la VM.
-Pendant l'installation une fenêtre avec label `Help protect your computer and improve windows automaticaly`, cliquer sur `Ask me later`.
+Pendant l'installation une fenêtre avec label `Help protect your computer and improve windows automaticaly`, cliquez sur `Ask me later`.
 
 Créez un utilisateur réaliste comme `Bernadette`.
 
@@ -276,7 +276,7 @@ Inserez dans la vm le disque de driver virtio téléchargé plus haut.
 Rendez vous dans le gestionnaire de périphériques.
 Pour chaque `Other device`, choisissez d'installer les drivers manuellement et donnez le chemin du CD.
 
-Eteingez la VM et retirer le lecteur CD.
+Eteingez la VM et retirez le lecteur CD.
 Supprimez également le Disk virtio.
 
 Modifiez ensuite le disque principal:
@@ -285,7 +285,7 @@ Modifiez ensuite le disque principal:
 
 Redémarrez la VM.
 
-Configurer le réseau : 
+Configurez le réseau : 
 IPV4 :
  
 * `Adresse IP` sur `192.168.100.101`
@@ -295,8 +295,8 @@ IPV4 :
 
 Connectez-vous au ftp et téléchargez le package ainsi que les exécutables python.
 
-* Installez les outils correspondant à votre version de windows.
-* Exécuter les fichiers reg.
+* Installez les outils correspondant à votre version de Windows.
+* Exécutez les fichiers reg.
 * Installez python et pillow.
 * Désactivez windows defender, le firewall, les mises à jour automatique ainsi que les ACL.
 
@@ -307,7 +307,7 @@ Eteignez la VM.
 
 ## Installation de Cuckoo
 
-### Préparation de l'environement Virtuel
+### Préparation de l'environnement Virtuel
 
 
 On va lancer cuckoo dans un environement virtuel car c'est plus pratique.
@@ -345,11 +345,11 @@ On édite `$CWD/conf/cuckoo.conf` :
 * `IP` sur `192.168.100.1`
 * `Postgresql` sur `connection = postgresql://cuckoo:password@localhost:5432/cuckoo`
 
-Biensûr `password` correspond au mot de passe que vous avez mis lors de la configuration de postgresql.
+Bien sûr `password` correspond au mot de passe que vous avez mis lors de la configuration de postgresql.
 
 
 On édite `$CWD/conf/processing.conf` : 
-
+  
 * `Suricata` sur `Yes`
 * changez le path de la configuration de suricata sur `/etc/suricata/conf/suricata-cuckoo.conf`
 
@@ -373,7 +373,7 @@ Dans la machine `cuckoo1` :
 * `Snapshot` sur le nom du snapchot de la vm que vous allez prendre (je l'ai appelé "ready")
 * `interface` sur l'interface de la machine virtuel sur le résea privé (virbr1 pour moi)
 * `ip` sur l'ip de la vm `192.168.100.101`
-* `osprofile` sur le profile volatily de l'os de la vm (RTFM)
+* `osprofile` sur le profile volatily de l'os de la VM (RTFM)
 
 
 
@@ -383,12 +383,12 @@ On fini de configurer la VM :
 
 * Redémarrez la VM.
 * Ouvrez msconfig et désactivez toutes les applications qui se lancent au démarrage.
-* Dans l'onglet service cachez les services microsofts et désactivez les mises à jour des logiciels tiers.
+* Dans l'onglet service cachez les services Microsofts et désactivez les mises à jour des logiciels tiers.
 * Téléchargez l'agent.pyw, sur le FTP renommez le avec un nom plus légitime et placez le dans le dossier de démarrage automatique.
 * Redémarrez la VM et regadez si l'agent.py tourne (processus pythonw.exe lancé)
 
 
-On va obfusquer la Vm aux malwares : 
+On va obfusquer la VM aux malwares : 
 
 `sudo virsh edit win7_sandbox`
 
@@ -404,13 +404,14 @@ Dans la partie domaine ajoutez :
 <qemu:arg value='host,hv_time,kvm=off,hv_vendor_id=null,-hypervisor'/>
 </qemu:commandline>
 ```
-Modifiez ou ajouter : 
+Modifiez ou ajoutez : 
 
 ```
  <kvm>
     <hidden state='on'/>
   </kvm>
 ```
+
 Ajoutez juste au dessus de `</feature>`
 
 ```  
@@ -420,16 +421,16 @@ Ajoutez juste au dessus de `</feature>`
  </cpu>
 ```
 
-Prennez un snapchot de la vm et nommez le comme vous l'avez configurer dans `kvm.conf` (j'avais mis "ready")
+Prennez un snapchot de la VM et nommez le comme vous l'avez configurer dans `kvm.conf` (j'avais mis "ready")
 
-Vous pouvez faire des backup de la vm en cas de problèmes.
+Vous pouvez faire des backups de la vm en cas de problèmes.
 
 ---
 ---
 
 ## Installation des services WEB
 
-On va utiliser un Nginx comme reverse proxy afin de permettre de sécuriser l'accés à l'interface WEB.
+On va utiliser un Nginx comme reverse proxy afin de sécuriser l'accés à l'interface WEB.
 
 On s'ajoute au groupe cuckoo : `sudo usermod -a -G cuckoo $USER`
 
@@ -491,7 +492,7 @@ sudo ln -s /etc/nginx/sites-available/cuckoo-web.conf /etc/nginx/sites-enabled/c
 sudo systemctl restart nginx
 ```
 
-On va ensuite modifier la configuration afin d'appliquer les précaution de sécurité et de rendre l'interface web disponnible sur le réseau.
+On va ensuite modifier la configuration afin d'appliquer les précaution sde sécurité et rendre l'interface web disponnible sur le réseau.
 
 
 ```sh
@@ -531,7 +532,7 @@ server {
 
 On relance Nginx `sudo service nginx restart`
 
-Ensuite on peut lancer cuckoo dans le virtual environement :
+Ensuite on peut lancer Cuckoo dans le virtual environement :
 
 ```console
 cuckoo community
@@ -542,4 +543,4 @@ cuckoo
 ---
 ---
 
-Félicitation vous pouvez utiliser cuckoo !
+Félicitation vous pouvez utiliser Cuckoo !
